@@ -1,4 +1,9 @@
 extends base
+include mixins/li.pug
 
 block content
-    div
+    div.container
+        h1.title Cherry Music
+        ul.lists
+            each item, index in songs
+                +musiclist(item, index)
