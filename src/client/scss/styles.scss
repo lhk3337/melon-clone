@@ -1,15 +1,12 @@
 // Config
 @import "./config/_variables.scss";
 @import "./config/_reset.scss";
-
+@import "./player.scss";
+@import "./listmusic.scss";
 // Components
-
 // Example: @import "./components/message.scss";
-
 // Screens
-
 // Example: @import "./screens/search.scss";
-
 // Defaults
 a {
   color: inherit;
@@ -24,66 +21,23 @@ body {
 }
 
 main {
-  max-width: 600px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 .container {
-  margin-top: 2rem;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: #202a42;
-}
-.title {
-  font-size: 3rem;
-  color: $main;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
-
-.lists span {
-  color: $main;
-  font-weight: bold;
-}
-.list {
   display: flex;
-  margin-bottom: 1.5rem;
-  justify-content: space-between;
-  align-items: center;
-}
-.list:last-child {
-  margin-bottom: 0;
+  gap: 50px;
+  margin-top: 6rem;
+  justify-content: center;
 }
 
-.rightContainer {
-  display: flex;
-  gap: 30px;
-}
-
-.btn {
-  background-color: $main;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-.btn a {
-  color: white;
-  font-weight: bold;
-}
-
-.listnerTitle {
-  font-size: 0.825rem;
-  color: $text;
-}
-.listnercount {
-  font-weight: bold;
-  color: $text;
-}
 footer {
   color: $main;
   font-weight: bold;
-  margin-left: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+  position: absolute !important;
+  bottom: 0;
+
+  // height: 2.5rem; /* 푸터 높이 */
 }

@@ -1,0 +1,62 @@
+.listmusic {
+  padding: 30px;
+  border-radius: 10px;
+  background-color: $bgsecond;
+  height: 30vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.listmusic::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  font-size: 3rem;
+  color: $main;
+  font-weight: bold;
+  margin: 2rem 5rem;
+}
+
+.lists span {
+  color: $main;
+  font-weight: bold;
+}
+.list {
+  display: flex;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+.list:last-child {
+  margin-bottom: 0;
+}
+
+.rightContainer {
+  display: flex;
+  gap: 30px;
+}
+
+.btn {
+  background-color: $main;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+.btn a {
+  color: white;
+  font-weight: bold;
+}
+
+.listnerTitle {
+  font-size: 0.825rem;
+  color: $text;
+}
+.listnercount {
+  font-weight: bold;
+  color: $text;
+}
