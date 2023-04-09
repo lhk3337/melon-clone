@@ -21,23 +21,27 @@ body {
 }
 
 main {
-  max-width: 1080px;
+  max-width: 400px;
   margin: 0 auto;
 }
+
+@media (min-width: 768px) {
+  main {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
 .container {
   display: flex;
+  flex-direction: column;
   gap: 50px;
-  margin-top: 6rem;
+  margin-top: 4rem;
   justify-content: center;
 }
 
 footer {
   color: $main;
   font-weight: bold;
-  margin-left: 5rem;
-  margin-bottom: 2rem;
-  position: absolute !important;
-  bottom: 0;
-
-  // height: 2.5rem; /* 푸터 높이 */
+  margin: 2rem;
 }
