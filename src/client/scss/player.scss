@@ -1,11 +1,11 @@
 .player {
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $bgsecond;
-  height: 376px;
+  height: 200px;
 }
 
 .boxs {
@@ -21,14 +21,24 @@
   align-items: center;
   border-radius: 10px;
 }
-
+.default svg {
+  width: 150px;
+  height: 150px;
+}
 .video_container iframe {
   width: 350px;
-  height: 380px;
+  height: 180px;
 }
 @media (min-width: 768px) {
   .video_container iframe {
     width: 550px;
-    height: 370px;
+    height: 300px;
+  }
+  .default svg {
+    width: 250px;
+    height: 250px;
+  }
+  .player {
+    height: 32vh;
   }
 }

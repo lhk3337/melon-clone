@@ -11,13 +11,6 @@
   display: none;
 }
 
-.title {
-  font-size: 3rem;
-  color: $main;
-  font-weight: bold;
-  margin: 2rem 5rem;
-}
-
 .lists span {
   color: $main;
   font-weight: bold;
@@ -59,4 +52,10 @@
 .listnercount {
   font-weight: bold;
   color: $text;
+}
+
+@media (min-width: 768px) {
+  .listmusic {
+    height: 40vh;
+  }
 }
