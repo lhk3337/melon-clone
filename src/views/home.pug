@@ -1,13 +1,7 @@
 extends base
-include mixins/li.pug
-include mixins/player.pug
-block content
 
-    div.container
-        +player
-        button.pause Pause
-        button.play Play
-        div.listmusic
-            ul.lists
-                each item, index in songs
-                    +musiclist(item, index)
+block content
+    section
+        div.container
+            h1.title Cherry Music
+        //- a(href="/music") music

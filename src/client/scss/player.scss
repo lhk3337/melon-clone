@@ -5,11 +5,13 @@
   justify-content: center;
   align-items: center;
   background-color: $bgsecond;
-  height: 200px;
+  width: 97%;
+  height: 100px;
+  // display: none;
 }
 
 .boxs {
-  background-color: $main;
+  background-color: $pink;
   outline: none;
   border: none;
   color: white;
@@ -22,23 +24,23 @@
   border-radius: 10px;
 }
 .default svg {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 .video_container iframe {
-  width: 350px;
-  height: 180px;
+  // width: 100%;
+  // height: 180px;
 }
 @media (min-width: 768px) {
-  .video_container iframe {
-    width: 550px;
-    height: 300px;
-  }
-  .default svg {
-    width: 250px;
-    height: 250px;
-  }
-  .player {
-    height: 32vh;
-  }
+  // .video_container iframe {
+  //   width: 550px;
+  //   height: 300px;
+  // }
+  // .default svg {
+  //   width: 250px;
+  //   height: 250px;
+  // }
+  // .player {
+  //   height: 32vh;
+  // }
 }
