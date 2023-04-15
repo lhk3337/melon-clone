@@ -1,13 +1,12 @@
 .player {
   padding: 20px;
+  box-sizing: border-box;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $bgsecond;
-  width: 97%;
-  height: 100px;
-  // display: none;
+  height: 150px;
 }
 
 .boxs {

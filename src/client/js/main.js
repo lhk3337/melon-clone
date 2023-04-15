@@ -15,7 +15,7 @@ let player;
 function onYouTubeIframeAPIReady(youtubeId) {
   player = new YT.Player($player, {
     height: "300",
-    width: "550",
+    width: "100%",
     videoId: youtubeId,
     playerVars: {
       controls: 1,
@@ -33,7 +33,7 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-async function onPlayerStateChange(event) {
+function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
     player.stopVideo();
   }
