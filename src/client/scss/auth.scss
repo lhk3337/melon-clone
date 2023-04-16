@@ -1,0 +1,103 @@
+.authContainer {
+  position: absolute;
+  padding: 2rem;
+  width: 426px;
+  background-color: $bg2;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.authContainer h1,
+h2 {
+  color: $pink;
+  font-weight: bold;
+}
+.authtitle {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.authContainer h1 {
+  font-size: 3rem;
+}
+.authContainer h2 {
+  margin: 40px 0px 20px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.inputContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $bg3;
+  border-radius: 10px;
+  padding: 30px 20px;
+  // display: flex;
+  // flex-direction: column;
+}
+.inputContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.inputContainer form p {
+  font-weight: 700;
+  font-size: 24px;
+}
+.inputContainer form .inputValue {
+  background-color: transparent;
+  outline: none !important;
+  border: 2px solid $text;
+  padding: 15px;
+  border-radius: 10px;
+  color: #bdbdbd;
+  font-size: 20px;
+}
+.inputContainer form .inputValue::placeholder {
+  color: #949494;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+}
+.inputContainer form .inputValue:focus {
+  outline: none !important;
+  border-color: $pink;
+  padding: 15px;
+  border-radius: 10px;
+}
+.errorMessage {
+  color: $pink;
+  font-weight: bold;
+}
+.inputContainer form .subBtn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  background-color: $pink;
+  margin-top: 1rem;
+}
+.inputContainer form .subBtn:hover {
+  background-color: #cf127a;
+}
+
+.inputContainer .authLink {
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.authLink span {
+  font-size: 1rem;
+}

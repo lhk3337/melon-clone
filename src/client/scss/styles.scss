@@ -1,5 +1,6 @@
 // Config
 @import "./config/_variables.scss";
+@import "./auth.scss";
 @import "./config/_reset.scss";
 @import "./player.scss";
 @import "./listmusic.scss";
@@ -53,7 +54,7 @@ section {
 
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: #3b3f88;
+  background-color: $bgsecond;
 }
 .nav {
   margin-top: 38px;
