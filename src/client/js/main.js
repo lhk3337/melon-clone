@@ -38,13 +38,14 @@ function onPlayerStateChange(event) {
     player.stopVideo();
   }
 }
-
-$pauseBtn.addEventListener("click", () => {
-  player.pauseVideo();
-});
-$playBtn.addEventListener("click", () => {
-  player.playVideo();
-});
+if ($pauseBtn && $playBtn) {
+  $pauseBtn.addEventListener("click", () => {
+    player.pauseVideo();
+  });
+  $playBtn.addEventListener("click", () => {
+    player.playVideo();
+  });
+}
 
 $btn.forEach((value) => {
   value.addEventListener("click", () => {
