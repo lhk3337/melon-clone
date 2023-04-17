@@ -1,0 +1,22 @@
+.container {
+  // height: 100vh;
+  // width: 95%;
+  padding: 20px 40px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+.title {
+  font-size: 3rem;
+  color: $pink;
+  font-weight: bold;
+  margin-top: 1.25rem;
+}
+
+.subTitle {
+  margin-top: 1.25rem;
+  color: $sky;
+  font-size: 2rem;
+  font-weight: bold;
+}

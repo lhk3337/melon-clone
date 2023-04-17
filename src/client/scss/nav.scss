@@ -1,0 +1,51 @@
+.sidebar {
+  position: fixed;
+  width: 78px;
+  height: 100vh;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: $bgsecond;
+}
+.nav {
+  margin-top: 38px;
+  margin-left: 25px;
+}
+.nav .profile {
+  position: fixed;
+  height: 85px;
+  width: 78px;
+  left: 0;
+  bottom: 0;
+  background: $pink;
+  box-sizing: border-box;
+  padding: 10px 30px 0px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile .profileUserId {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 25px;
+}
+.profileUserId span:first-child {
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 250px;
+    position: fixed;
+    height: 100vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: $bgsecond;
+  }
+  .nav .profile {
+    width: 250px;
+  }
+}
