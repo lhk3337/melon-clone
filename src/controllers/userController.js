@@ -2,10 +2,6 @@ import User from "../models/User";
 import bcrypt from "bcrypt";
 
 export const getLogin = async (req, res) => {
-  const { loggedIn } = req.session;
-  if (loggedIn) {
-    return res.redirect("/");
-  }
   return res.render("login", { pageTitle: "LOG IN" });
 };
 export const postLogin = async (req, res) => {
@@ -27,10 +23,6 @@ export const postLogin = async (req, res) => {
 };
 
 export const getJoin = async (req, res) => {
-  const { loggedIn } = req.session;
-  if (loggedIn) {
-    return res.redirect("/");
-  }
   return res.render("join", { pageTitle: "JOIN" });
 };
 
