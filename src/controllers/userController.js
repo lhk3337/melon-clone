@@ -2,6 +2,10 @@ import User from "../models/User";
 import bcrypt from "bcrypt";
 
 export const getLogin = async (req, res) => {
+  const { loggedIn } = req.session;
+  if (loggedIn) {
+    return res.redirect("/");
+  }
   return res.render("login", { pageTitle: "LOG IN" });
 };
 export const postLogin = async (req, res) => {
@@ -13,14 +17,20 @@ export const postLogin = async (req, res) => {
       .status(400)
       .render("login", { pageTitle, errorMessage: "An account with this user id does not exists." });
   }
-  const passwordWrong = await bcrypt.compare(password, user.password);
-  if (!passwordWrong) {
+  const comparePassword = await bcrypt.compare(password, user.password);
+  if (!comparePassword) {
     return res.status(400).render("login", { pageTitle, errorMessage: "Wrong password, Please enter it again." });
   }
+  req.session.loggedIn = true;
+  req.session.user = user;
   return res.redirect("/");
 };
 
 export const getJoin = async (req, res) => {
+  const { loggedIn } = req.session;
+  if (loggedIn) {
+    return res.redirect("/");
+  }
   return res.render("join", { pageTitle: "JOIN" });
 };
 
@@ -54,6 +64,7 @@ export const postJoin = async (req, res) => {
   }
 };
 
-export const logout = async (req, res) => {
-  return res.send("logout");
+export const logout = (req, res) => {
+  req.session.destroy();
+  return res.redirect("/login");
 };
