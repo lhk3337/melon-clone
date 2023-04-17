@@ -14,11 +14,11 @@ html(lang="ko")
             div.inputContainer
                 form(method="POST")
                     p ID
-                    input(class="inputValue", name="userid",placeholder="User ID", required, maxlengh=20 autocomplete="off")
+                    input(class="inputValue", name="userid",placeholder="User ID", required, maxlengh=20, autocomplete="off")
                     p Password
-                    input(class="inputValue", name="password",placeholder="Password", required, maxlengh=20, type="password" autocomplete="off")
+                    input(class="inputValue", name="password",placeholder="Password", required, minlength=10, type="password", autocomplete="off")
                     p Confirm Password
-                    input(class="inputValue", name="password2",placeholder="Confirm Password", required, maxlengh=20, type="password" autocomplete="off")
+                    input(class="inputValue", name="password2",placeholder="Confirm Password", required, minlength=10, type="password" autocomplete="off")
                     if(errorMessage)
                         span.errorMessage=errorMessage
                     input(class="subBtn" value="JOIN" type="submit")

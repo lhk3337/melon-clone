@@ -14,9 +14,9 @@ html(lang="ko")
             div.inputContainer
                 form(method="POST")
                     p ID
-                    input(class="inputValue", name="userid",placeholder="User ID", required, maxlengh=20 autocomplete="off")
+                    input(class="inputValue", name="userid",placeholder="User ID", required, maxlengh=20, autocomplete="off")
                     p Password
-                    input(class="inputValue", name="password",placeholder="Password", required, maxlengh=20, type="password")
+                    input(class="inputValue", name="password",placeholder="Password", required, minlengh=10, type="password")
                     if(errorMessage)
                         span.errorMessage=errorMessage
                     input(class="subBtn" value="Log In" type="submit")
