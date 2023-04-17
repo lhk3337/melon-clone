@@ -7,6 +7,7 @@ import { localsMiddleware } from "./middlewares";
 import musicRouter from "./routers/musicRouter";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
+import apiRouter from "./routers/apiRouter";
 
 const app = express();
 const logger = morgan("dev");
@@ -24,7 +25,8 @@ app.use(
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
-app.use(flash());
+
+// app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
@@ -32,6 +34,7 @@ app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/user", userRouter);
 app.use("/music", musicRouter);
+app.use("/api", apiRouter);
 /*
 Add more routers here!
 */

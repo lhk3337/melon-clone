@@ -12,3 +12,6 @@ block content
                 ul.lists
                     each item, index in songs
                         +musiclist(item, index)
+block scripts
+    script(src="/static/js/musicPlayer.js")
+    script(src="/static/js/playList.js")
