@@ -48,11 +48,14 @@ if ($pauseBtn && $playBtn) {
 $listenBtn.forEach((value) => {
   value.addEventListener("click", () => {
     const youtubeId = value.getAttribute("data-id");
+    const mid = value.getAttribute("data-mid");
+    fetch(`/api/music/${mid}/views`, {
+      method: "POST",
+    });
     if (player) {
       player.destroy();
     }
     onYouTubeIframeAPIReady(youtubeId);
-
     // 플레이어가 준비되면 실행됩니다.
 
     // $player.innerHTML = `

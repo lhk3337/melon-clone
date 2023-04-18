@@ -10,8 +10,8 @@ block content
             button.play Play
             div.listmusic
                 ul.lists
-                    if(playlists)
-                        each item, index in playlists.playlists
+                    if(playlistData)
+                        each item, index in playlistData.playlists
                             +playlist(item, index)
 block scripts
     script(src="/static/js/musicPlayer.js")

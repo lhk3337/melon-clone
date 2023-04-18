@@ -12,6 +12,22 @@ export const top = async (req, res) => {
   }
 };
 
+export const addListnersCount = async (req, res) => {
+  const {
+    params: { id: musicId },
+  } = req;
+
+  const music = await Song.findById(musicId);
+  if (!music) {
+    return res.status(404);
+  }
+
+  const { playcount } = JSON.parse(JSON.stringify(music));
+
+  await Song.findByIdAndUpdate(musicId, {
+    playcount: playcount + 1,
+  });
+};
 export const playlists = async (req, res) => {
   const {
     session: {
@@ -19,7 +35,11 @@ export const playlists = async (req, res) => {
     },
   } = req;
   const playlists = await User.findById(_id).populate("playlists");
-  return res.render("playlists", { pageTitle: "playlist", playlists });
+  if (!playlists) {
+    return res.status(404);
+  }
+  const playlistData = JSON.parse(JSON.stringify(playlists));
+  return res.render("playlists", { pageTitle: "playlist", playlistData });
 };
 
 export const addplaylist = async (req, res) => {
