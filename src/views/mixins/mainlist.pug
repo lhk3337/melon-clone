@@ -1,0 +1,16 @@
+mixin mainlist(item, index)
+    li.list
+        div.leftContainer
+            if(index)
+                div.rank
+                    span=`${index+1}`
+            div.thumbContainer
+                img(class="thumbAlbum" src=`${item.thumbUrl}`, alt="thumbAlbum")
+            div.albuminfo
+                span=`${item.title}`
+                span=`${item.artist}`
+        div.rightContainer
+            div
+                h4.listnerTitle Listners
+                div.listnercount=`${item.playcount===undefined?0:item.playcount}`
+            

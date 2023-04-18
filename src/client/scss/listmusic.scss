@@ -50,17 +50,19 @@
   border-radius: 4px;
 }
 .thumbContainer .thumbAlbum {
-  width: 100%;
-  height: 100%;
+  width: 60px;
+  height: 60px;
 }
 .albuminfo {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  font-size: 12px;
 }
 .albuminfo span:last-child {
   color: $white;
   font-weight: 400;
+  font-size: 12px;
 }
 
 .btn {
@@ -88,8 +90,19 @@
   color: $sky;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .listmusic {
     // height: 40vh;
+  }
+  .albuminfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1rem;
+  }
+  .albuminfo span:last-child {
+    color: $white;
+    font-weight: 400;
+    font-size: 1rem;
   }
 }
