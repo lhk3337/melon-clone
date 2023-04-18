@@ -1,3 +1,4 @@
+import { async } from "regenerator-runtime";
 import Song from "../models/Song";
 import User from "../models/User";
 
@@ -11,18 +12,36 @@ export const top = async (req, res) => {
   }
 };
 
-export const lists = async (req, res) => {
-  return res.render("playlists", { pageTitle: "playlist" });
+export const playlists = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+  } = req;
+  const playlists = await User.findById(_id).populate("playlists");
+  return res.render("playlists", { pageTitle: "playlist", playlists });
 };
 
-export const playadd = async (req, res) => {
-  // const { id } = req.body;
-  // console.log(id);
-  console.log(req.params);
-  console.log(req.body);
-  return res.end();
-  // const isSong = await Song.findById(id);
-  // console.log(isSong);
+export const addplaylist = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    params: { id: musicId },
+  } = req;
 
-  // return res.send(req.params.id);
+  const users = await User.findById(_id);
+  const music = await Song.findById(musicId);
+  const songs = JSON.parse(JSON.stringify(music));
+
+  if (!music) {
+    return res.sendstatus(400);
+  }
+  if (!users.playlists.includes(songs._id)) {
+    await User.findByIdAndUpdate(_id, {
+      playlists: [...users.playlists, { ...songs }],
+    });
+  }
+
+  return res.end();
 };

@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-  userid: { type: String, require: true, unique: true },
-  password: { type: String, require: true },
+  userid: { type: String, required: true, unique: true },
+  password: { type: String, required: true, minLength: 10 },
+  playlists: [{ type: mongoose.Schema.Types.ObjectId, required: true, ref: "Song" }],
 });
 
 userSchema.pre("save", async function () {
