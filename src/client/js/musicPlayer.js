@@ -3,7 +3,8 @@ const $player = document.querySelector(".player");
 
 const $pauseBtn = document.querySelector(".pause");
 const $playBtn = document.querySelector(".play");
-
+const $currentTime = document.querySelector(".currentTime");
+const $musicTime = document.querySelector(".musicTime");
 var tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -29,19 +30,43 @@ function onYouTubeIframeAPIReady(youtubeId) {
 
 function onPlayerReady(event) {
   event.target.playVideo();
+  $musicTime.innerText = handleTime(player.getDuration());
 }
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
-    player.stopVideo();
+    player.pauseVideo();
+    clearInterval(playTimeIntervalID);
+  }
+  if (event.data == YT.PlayerState.PLAYING) {
+    $pauseBtn.style.display = "block";
+    $playBtn.style.display = "none";
+  }
+  if (event.data == YT.PlayerState.PAUSED) {
+    $pauseBtn.style.display = "none";
+    $playBtn.style.display = "block";
   }
 }
+const handleTime = (value) => {
+  const min = Math.floor(value / 60);
+  const sec = Math.floor(value % 60);
+  return `${min} : ${sec < 10 ? `0${sec}` : sec}`;
+};
+
+const setPlayTime = () => {
+  playTimeIntervalID = setInterval(() => {
+    $currentTime.innerText = handleTime(player.getCurrentTime());
+  }, 1000);
+};
+
 if ($pauseBtn && $playBtn) {
   $pauseBtn.addEventListener("click", () => {
     player.pauseVideo();
+    clearInterval(playTimeIntervalID);
   });
   $playBtn.addEventListener("click", () => {
     player.playVideo();
+    setPlayTime();
   });
 }
 
@@ -55,7 +80,11 @@ $listenBtn.forEach((value) => {
     if (player) {
       player.destroy();
     }
+    // fetch(`/api/music/${mid}`, {
+    //   method: "GET",
+    // });
     onYouTubeIframeAPIReady(youtubeId);
+    setPlayTime();
     // 플레이어가 준비되면 실행됩니다.
 
     // $player.innerHTML = `
