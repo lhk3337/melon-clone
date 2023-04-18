@@ -6,9 +6,8 @@
   box-sizing: border-box;
   border-radius: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
   background-color: $bgsecond;
   height: 150px;
 }
@@ -27,8 +26,9 @@
 }
 .times {
   display: flex;
-  width: 80%;
+  width: 300px;
   justify-content: space-between;
+  margin-right: 20px;
 }
 .default svg {
   width: 100px;
@@ -57,6 +57,25 @@
   border-radius: 10px;
   display: none;
 }
+
+.playTitle {
+  color: #ff458b;
+  font-weight: bold;
+}
+.playartist {
+  color: #ffff;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.leftControl {
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
+.rightControl {
+  display: flex;
+  align-items: center;
+}
 @media (min-width: 1024px) {
   // .video_container iframe {
   //   width: 550px;
@@ -69,4 +88,8 @@
   // .player {
   //   height: 32vh;
   // }
+}
+.playImg {
+  width: 60px;
+  height: 60px;
 }

@@ -1,10 +1,15 @@
+import axios from "axios";
 const $listenBtn = document.querySelectorAll(".listenBtn");
 const $player = document.querySelector(".player");
-
 const $pauseBtn = document.querySelector(".pause");
 const $playBtn = document.querySelector(".play");
 const $currentTime = document.querySelector(".currentTime");
 const $musicTime = document.querySelector(".musicTime");
+
+const $playTitle = document.querySelector(".playTitle");
+const $playartist = document.querySelector(".playartist");
+const $playImg = document.querySelector(".playImg");
+
 var tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -80,9 +85,16 @@ $listenBtn.forEach((value) => {
     if (player) {
       player.destroy();
     }
-    // fetch(`/api/music/${mid}`, {
-    //   method: "GET",
-    // });
+    const fetchData = async () => {
+      const {
+        data: { data },
+      } = await axios(`/api/music/${mid}`);
+
+      $playTitle.innerText = data.title;
+      $playartist.innerText = data.artist;
+      $playImg.src = data.thumbUrl;
+    };
+    fetchData();
     onYouTubeIframeAPIReady(youtubeId);
     setPlayTime();
     // 플레이어가 준비되면 실행됩니다.

@@ -74,12 +74,10 @@ export const delplaylist = async (req, res) => {
   await User.findByIdAndUpdate(_id, { $pull: { playlists: musicId } });
 };
 
-// export const musicinfo = async (req, res) => {
-//   const {
-//     params: { id: musicId },
-//   } = req;
-//   const music = await Song.findById(musicId);
-//   const songs = JSON.parse(JSON.stringify(music));
-//   console.log(songs);
-//   return res.render("player", { songs: { title, artist, thumbUrl } });
-// };
+export const musicinfo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const music = await Song.findById(id);
+  await res.json({ data: music });
+};
