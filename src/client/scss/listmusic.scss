@@ -25,10 +25,37 @@
 .list:last-child {
   margin-bottom: 0;
 }
-
+.leftContainer {
+  display: flex;
+  align-items: center;
+}
 .rightContainer {
   display: flex;
   gap: 30px;
+}
+.leftContainer .rank {
+  width: 20px;
+  margin-right: 20px;
+}
+.leftContainer .thumbContainer {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #c0c0ff;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+.thumbContainer .thumbAlbum {
+  width: 100%;
+  height: 100%;
+}
+.albuminfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.albuminfo span:last-child {
+  color: $white;
+  font-weight: 400;
 }
 
 .btn {

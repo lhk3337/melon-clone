@@ -1,5 +1,5 @@
 extends base
-include mixins/musiclist.pug
+include mixins/toplist.pug
 include mixins/player.pug
 block content
     section
@@ -11,7 +11,8 @@ block content
             div.listmusic
                 ul.lists
                     each item, index in songs
-                        +musiclist(item, index)
+                        +toplist(item, index)
 block scripts
     script(src="/static/js/musicPlayer.js")
     script(src="/static/js/playList.js")
+
