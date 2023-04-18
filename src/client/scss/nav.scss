@@ -10,6 +10,15 @@
   margin-top: 38px;
   margin-left: 25px;
 }
+.nav .navul {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.navlist span {
+  display: none;
+}
+
 .nav .profile {
   position: fixed;
   height: 85px;
@@ -18,11 +27,10 @@
   bottom: 0;
   background: $pink;
   box-sizing: border-box;
-  padding: 10px 30px 0px;
   border-bottom-right-radius: 10px;
   overflow: hidden;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .profile .profileUserId {
@@ -30,13 +38,14 @@
   gap: 5px;
   flex-direction: column;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 18px;
+  display: none;
 }
 .profileUserId span:first-child {
   font-size: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .sidebar {
     width: 250px;
     position: fixed;
@@ -45,7 +54,27 @@
     border-bottom-right-radius: 20px;
     background-color: $bgsecond;
   }
+  .nav .navul {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .navlist {
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .navlist span {
+    display: block;
+  }
   .nav .profile {
     width: 250px;
+    padding: 10px 30px 0px;
+    justify-content: space-between;
+  }
+  .profile .profileUserId {
+    display: block;
   }
 }

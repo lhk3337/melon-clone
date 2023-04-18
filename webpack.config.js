@@ -8,6 +8,7 @@ module.exports = {
     main: BASE_JS + "main.js",
     musicPlayer: BASE_JS + "musicPlayer.js",
     playList: BASE_JS + "playList.js",
+    nav: BASE_JS + "nav.js",
   },
   plugins: [
     new MiniCssExtractPlugin({
