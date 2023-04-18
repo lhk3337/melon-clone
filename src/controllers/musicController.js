@@ -65,3 +65,12 @@ export const addplaylist = async (req, res) => {
 
   return res.end();
 };
+export const delplaylist = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    params: { id: musicId },
+  } = req;
+  await User.findByIdAndUpdate(_id, { $pull: { playlists: musicId } });
+};
