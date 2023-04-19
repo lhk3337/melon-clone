@@ -1,4 +1,3 @@
-import axios from "axios";
 const $listenBtn = document.querySelectorAll(".listenBtn");
 const $player = document.querySelector(".player");
 const $pauseBtn = document.querySelector(".pause");
@@ -86,23 +85,14 @@ $listenBtn.forEach((value) => {
       player.destroy();
     }
     const fetchData = async () => {
-      const {
-        data: { data },
-      } = await axios(`/api/music/${mid}`);
-
-      $playTitle.innerText = data.title;
-      $playartist.innerText = data.artist;
-      $playImg.src = data.thumbUrl;
+      const { data } = await (await fetch(`/api/music/${mid}`)).json();
+      const { title, artist, thumbUrl } = data;
+      $playTitle.innerText = title;
+      $playartist.innerText = artist;
+      $playImg.src = thumbUrl;
     };
     fetchData();
     onYouTubeIframeAPIReady(youtubeId);
     setPlayTime();
-    // 플레이어가 준비되면 실행됩니다.
-
-    // $player.innerHTML = `
-    //   <div class="video_container">
-    //     <iframe class="youtube_player" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe>
-    //   </div>
-    // `;
   });
 });
