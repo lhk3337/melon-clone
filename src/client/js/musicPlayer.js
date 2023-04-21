@@ -9,6 +9,8 @@ const $playTitle = document.querySelector(".playTitle");
 const $playartist = document.querySelector(".playartist");
 const $playImg = document.querySelector(".playImg");
 
+const progressBarSlider = document.getElementById("progressiveBar");
+
 const $volcontrol = document.getElementById("volcontrol");
 const $volmuteBtn = document.querySelector(".volmute");
 const $volunmuteBtn = document.querySelector(".volunmute");
@@ -21,13 +23,11 @@ let player;
 let volumeValue;
 function onYouTubeIframeAPIReady(youtubeId) {
   player = new YT.Player($player, {
-    height: "300",
-    width: "100%",
+    // height: "300",
+    // width: "100%",
     videoId: youtubeId,
     playerVars: {
-      controls: 1,
-      rel: 0,
-      autoplay: 1, // 자동 재생 유무
+      controls: 0,
     },
     events: {
       onReady: onPlayerReady,
@@ -38,6 +38,12 @@ function onYouTubeIframeAPIReady(youtubeId) {
 
 function onPlayerReady(event) {
   event.target.playVideo();
+  progressBarSlider.addEventListener("input", () => {
+    const value = progressBarSlider.value;
+    const percent = Math.floor((value / 100) * player.getDuration());
+    // 비디오 재생 위치 이동
+    player.seekTo(percent);
+  });
   $musicTime.innerText = handleTime(player.getDuration());
 }
 
@@ -45,6 +51,12 @@ function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
     player.pauseVideo();
     clearInterval(playTimeIntervalID);
+    $pauseBtn.style.display = "none";
+    $playBtn.style.display = "block";
+    if ($playBtn.style.display === "block") {
+      player.playVideo();
+      setPlayTime();
+    }
   }
   if (event.data == YT.PlayerState.PLAYING) {
     player.setVolume($volcontrol.value);
@@ -65,6 +77,9 @@ const handleTime = (value) => {
 const setPlayTime = () => {
   playTimeIntervalID = setInterval(() => {
     $currentTime.innerText = handleTime(player.getCurrentTime());
+    const percent = Math.floor((player.getCurrentTime() / player.getDuration()) * 100);
+    progressBarSlider.style.background = `linear-gradient(to right, #ff458b ${percent}%, #ffff ${percent}%)`;
+    progressBarSlider.value = percent;
   }, 1000);
 };
 
@@ -102,8 +117,6 @@ $listenBtn.forEach((value) => {
     setPlayTime();
   });
 });
-
-// seek handler
 
 // volume handler
 const valPer = ($volcontrol.value / $volcontrol.max) * 100;
