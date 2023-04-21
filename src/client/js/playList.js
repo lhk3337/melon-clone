@@ -2,6 +2,8 @@ const $addBtn = document.querySelectorAll(".addBtn");
 const $delBtn = document.querySelectorAll(".delBtn");
 const $smMoreBtn = document.querySelectorAll(".smMoreBtn");
 const $smContainer = document.querySelectorAll(".smContainer");
+const $smBtn = document.querySelectorAll(".smBtn");
+
 $addBtn.forEach((value) => {
   value.addEventListener("click", () => {
     const id = value.getAttribute("data-id");
@@ -50,4 +52,11 @@ window.addEventListener("resize", function () {
       value.style = "none";
     });
   }
+});
+$smBtn.forEach((value) => {
+  value.addEventListener("click", () => {
+    $smContainer.forEach((value) => {
+      value.style = "none";
+    });
+  });
 });
