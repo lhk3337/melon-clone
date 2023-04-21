@@ -47,7 +47,7 @@ function onPlayerStateChange(event) {
     clearInterval(playTimeIntervalID);
   }
   if (event.data == YT.PlayerState.PLAYING) {
-    player.setVolume(50);
+    player.setVolume($volcontrol.value);
     $pauseBtn.style.display = "block";
     $playBtn.style.display = "none";
   }
@@ -103,12 +103,13 @@ $listenBtn.forEach((value) => {
   });
 });
 
+// seek handler
+
 // volume handler
 const valPer = ($volcontrol.value / $volcontrol.max) * 100;
 $volcontrol.style.background = `linear-gradient(to right, #ffff ${valPer}%, #C79FDF ${valPer}%)`;
 
 $volcontrol.addEventListener("input", function () {
-  console.log($volcontrol.value);
   const valPer = ($volcontrol.value / $volcontrol.max) * 100;
   $volcontrol.style.background = `linear-gradient(to right, #ffff ${valPer}%, #C79FDF ${valPer}%)`;
   volumeValue = $volcontrol.value;
@@ -133,6 +134,7 @@ $volunmuteBtn.addEventListener("click", () => {
     player.mute();
   } else {
     player.unMute();
+    player.setVolume(volumeValue);
   }
 
   $volunmuteBtn.style.display = "none";
@@ -149,6 +151,6 @@ $volmuteBtn.addEventListener("click", () => {
   if (volumeValue !== "0") {
     player.mute();
   } else {
-    player.mute();
+    player.unMute();
   }
 });
