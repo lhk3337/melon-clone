@@ -78,6 +78,32 @@ if ($pauseBtn && $playBtn) {
     setPlayTime();
   });
 }
+
+$listenBtn.forEach((value) => {
+  value.addEventListener("click", () => {
+    const youtubeId = value.getAttribute("data-id");
+    const mid = value.getAttribute("data-mid");
+    fetch(`/api/music/${mid}/views`, {
+      method: "POST",
+    });
+    if (player) {
+      player.destroy();
+    }
+    const fetchData = async () => {
+      const { data } = await (await fetch(`/api/music/${mid}`)).json();
+      const { title, artist, thumbUrl } = data;
+      $playTitle.innerText = title;
+      $playartist.innerText = artist;
+      $playImg.src = thumbUrl;
+    };
+    fetchData();
+
+    onYouTubeIframeAPIReady(youtubeId);
+    setPlayTime();
+  });
+});
+
+// volume handler
 const valPer = ($volcontrol.value / $volcontrol.max) * 100;
 $volcontrol.style.background = `linear-gradient(to right, #ffff ${valPer}%, #C79FDF ${valPer}%)`;
 
@@ -125,28 +151,4 @@ $volmuteBtn.addEventListener("click", () => {
   } else {
     player.mute();
   }
-});
-
-$listenBtn.forEach((value) => {
-  value.addEventListener("click", () => {
-    const youtubeId = value.getAttribute("data-id");
-    const mid = value.getAttribute("data-mid");
-    fetch(`/api/music/${mid}/views`, {
-      method: "POST",
-    });
-    if (player) {
-      player.destroy();
-    }
-    const fetchData = async () => {
-      const { data } = await (await fetch(`/api/music/${mid}`)).json();
-      const { title, artist, thumbUrl } = data;
-      $playTitle.innerText = title;
-      $playartist.innerText = artist;
-      $playImg.src = thumbUrl;
-    };
-    fetchData();
-
-    onYouTubeIframeAPIReady(youtubeId);
-    setPlayTime();
-  });
 });
