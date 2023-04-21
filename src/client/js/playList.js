@@ -1,5 +1,7 @@
 const $addBtn = document.querySelectorAll(".addBtn");
 const $delBtn = document.querySelectorAll(".delBtn");
+const $smMoreBtn = document.querySelectorAll(".smMoreBtn");
+const $smContainer = document.querySelectorAll(".smContainer");
 $addBtn.forEach((value) => {
   value.addEventListener("click", () => {
     const id = value.getAttribute("data-id");
@@ -23,4 +25,29 @@ $delBtn.forEach((value) => {
     alert("노래가 삭제 되었습니다.");
     window.location.reload();
   });
+});
+$smMoreBtn.forEach((value) => {
+  value.addEventListener("click", () => {
+    const conId = value.getAttribute("data-index");
+
+    $smContainer.forEach((value) => {
+      const id = value.getAttribute("data-index");
+      if (conId === id) {
+        if (value.style.display === "flex") {
+          value.style.display = "none";
+        } else {
+          value.style.display = "flex";
+        }
+      } else {
+        value.style = "none";
+      }
+    });
+  });
+});
+window.addEventListener("resize", function () {
+  if ((window, innerWidth > 1024)) {
+    $smContainer.forEach((value) => {
+      value.style = "none";
+    });
+  }
 });
