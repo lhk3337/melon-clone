@@ -1,60 +1,29 @@
 .player {
   display: none;
 }
-.control {
+.playerContainerbtn {
+  background-color: $pink;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+}
+.playContainer {
   padding: 20px;
   box-sizing: border-box;
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: $bgsecond;
   height: 150px;
 }
-.boxs {
-  background-color: $pink;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 10px;
+.playContainer .titleInfo {
   display: flex;
-  width: 20px;
-  height: 20px;
-  justify-content: center;
   align-items: center;
-  border-radius: 10px;
 }
-.times {
-  display: flex;
-  width: 300px;
-  justify-content: space-between;
-  margin-right: 20px;
-}
-.default svg {
-  width: 100px;
-  height: 100px;
-}
-.video_container iframe {
-  // width: 100%;
-  // height: 180px;
-}
-.play {
-  background-color: $pink;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-.pause {
-  background-color: $pink;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
+
+.pausebtn {
   display: none;
 }
 
@@ -67,16 +36,116 @@
   font-weight: 400;
   font-size: 1rem;
 }
-.leftControl {
+
+.playContainer .seekControl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  gap: 10px;
+}
+.times {
+  display: flex;
+}
+
+.volumeContainer {
+  justify-self: right;
+  align-self: center;
+
   display: flex;
   align-items: center;
-  width: 300px;
 }
-.rightControl {
+.volumebtn {
+  background-color: transparent;
+  color: white;
   display: flex;
-  align-items: center;
 }
-@media (min-width: 1024px) {
+.volunmute {
+  display: none;
+}
+
+input[type="range"] {
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  width: 80%;
+  height: 6px;
+  background-color: #d5d5d5;
+  border-radius: 8px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 6px;
+}
+input[type="range"]::-moz-track {
+  -moz-appearance: none;
+  height: 6px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 6px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+  border: none;
+}
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+  border: none;
+}
+input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+  border: none;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+}
+@media (max-width: 1024px) {
+  .playContainer {
+    grid-template-columns: 1fr;
+    height: 25vh;
+  }
+  .playContainer .titleInfo {
+    width: 100%;
+    justify-self: start;
+    justify-content: space-between;
+  }
+  .playContainer .seekControl {
+    margin: 15px 0px;
+  }
+  .volumeContainer {
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    align-items: center;
+  }
+  .volumebtn {
+    background-color: transparent;
+    color: white;
+    display: flex;
+  }
+
   // .video_container iframe {
   //   width: 550px;
   //   height: 300px;
@@ -93,3 +162,11 @@
   width: 60px;
   height: 60px;
 }
+
+// input[type="range"] {
+//   width: 100%;
+//   height: 10px;
+//   background-color: #ddd;
+//   border-radius: 5px;
+//   outline: none;
+// }
