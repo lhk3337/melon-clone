@@ -21,6 +21,8 @@ var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 let player;
 let volumeValue;
+
+// youtube iframe api
 function onYouTubeIframeAPIReady(youtubeId) {
   player = new YT.Player($player, {
     // height: "300",
@@ -35,7 +37,7 @@ function onYouTubeIframeAPIReady(youtubeId) {
     },
   });
 }
-
+// onReady handler
 function onPlayerReady(event) {
   event.target.playVideo();
   progressBarSlider.addEventListener("input", () => {
@@ -46,7 +48,7 @@ function onPlayerReady(event) {
   });
   $musicTime.innerText = handleTime(player.getDuration());
 }
-
+// onStateChange handler
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
     player.pauseVideo();
@@ -68,12 +70,15 @@ function onPlayerStateChange(event) {
     $playBtn.style.display = "block";
   }
 }
+
+// music play time convert
 const handleTime = (value) => {
   const min = Math.floor(value / 60);
   const sec = Math.floor(value % 60);
   return `${min} : ${sec < 10 ? `0${sec}` : sec}`;
 };
 
+// real play time passing handler
 const setPlayTime = () => {
   playTimeIntervalID = setInterval(() => {
     $currentTime.innerText = handleTime(player.getCurrentTime());
@@ -83,6 +88,7 @@ const setPlayTime = () => {
   }, 1000);
 };
 
+// pause button and play button click handler
 if ($pauseBtn && $playBtn) {
   $pauseBtn.addEventListener("click", () => {
     player.pauseVideo();
@@ -94,6 +100,7 @@ if ($pauseBtn && $playBtn) {
   });
 }
 
+// music play button handler
 $listenBtn.forEach((value) => {
   value.addEventListener("click", () => {
     const youtubeId = value.getAttribute("data-id");
@@ -104,6 +111,8 @@ $listenBtn.forEach((value) => {
     if (player) {
       player.destroy();
     }
+
+    // Displaying album image, title and artist in the player
     const fetchData = async () => {
       const { data } = await (await fetch(`/api/music/${mid}`)).json();
       const { title, artist, thumbUrl } = data;
@@ -118,7 +127,7 @@ $listenBtn.forEach((value) => {
   });
 });
 
-// volume handler
+// volume control handler
 const valPer = ($volcontrol.value / $volcontrol.max) * 100;
 $volcontrol.style.background = `linear-gradient(to right, #ffff ${valPer}%, #C79FDF ${valPer}%)`;
 
