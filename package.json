@@ -29,7 +29,8 @@
     "postcss": "^8.4.21",
     "pug": "^3.0.2",
     "regenerator-runtime": "^0.13.7",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",

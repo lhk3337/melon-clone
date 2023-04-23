@@ -2,7 +2,10 @@ import express from "express";
 import morgan from "morgan";
 import session from "express-session";
 import flash from "express-flash";
+import path from "path";
 import MongoStore from "connect-mongo";
+import favicon from "serve-favicon";
+
 import { localsMiddleware } from "./middlewares";
 import musicRouter from "./routers/musicRouter";
 import rootRouter from "./routers/rootRouter";
@@ -35,6 +38,7 @@ app.use("/", rootRouter);
 app.use("/user", userRouter);
 app.use("/music", musicRouter);
 app.use("/api", apiRouter);
+app.use(favicon(path.join(__dirname, "public", "image", "favicon.ico")));
 /*
 Add more routers here!
 */
