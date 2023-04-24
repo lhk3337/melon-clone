@@ -1,0 +1,19 @@
+.addSongContainer {
+  margin: 100px auto;
+  width: 800px;
+  height: calc(100% - 100px);
+}
+.addSongContainer h1 {
+  margin-bottom: 20px;
+}
+@media (max-width: 1157px) {
+  .addSongContainer {
+    width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .addSongContainer {
+    width: 360px;
+  }
+}

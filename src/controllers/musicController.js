@@ -81,3 +81,30 @@ export const musicinfo = async (req, res) => {
   const music = await Song.findById(id);
   await res.json({ data: music });
 };
+
+export const getAddSong = (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+  } = req;
+  if (_id === "643e54773567a45fb9343bd6") {
+    res.render("addsong", { pageTitle: "Add Song" });
+  } else {
+    res.redirect("/");
+  }
+};
+export const postAddSong = async (req, res) => {
+  const { title, thumbUrl, artist, ytUrl } = req.body;
+  try {
+    await Song.create({
+      title,
+      thumbUrl,
+      artist,
+      ytUrl: ytUrl.split("=")[1],
+    });
+    return res.redirect("/");
+  } catch (error) {
+    console.error(error);
+  }
+};
