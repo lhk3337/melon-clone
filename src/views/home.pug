@@ -2,31 +2,33 @@ extends base
 include mixins/mainlist.pug
 
 block content
-    section
-        div.container
-            h1.title Cherry Music
-            div.contents
-                div.maintoplist 
-                    div.mainTitle
-                        h1 TOP 100
-                        a(href="/music/top")
-                            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16")
-                                path(d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z")
-                    div.topcontent
-                        ul.lists 
-                            each item in toplistsData
-                                +mainlist(item, index)
-                div.mainplaylist
-                    div.mainTitle
-                        h1 Play List
-                        a(href="/music/playlist")
-                            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16")
-                                path(d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z")
-                    div.playlistcontent
-                        ul.lists
-                            if(playlistData)
-                                each item in playlistData.playlists
-                                    +mainlist(item)
+    main
+        include partials/nav
+        section
+            div.container
+                h1.title Cherry Music
+                div.contents
+                    div.maintoplist 
+                        div.mainTitle
+                            h1 TOP 100
+                            a(href="/music/top")
+                                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16")
+                                    path(d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z")
+                        div.topcontent
+                            ul.lists 
+                                each item in toplistsData
+                                    +mainlist(item, index)
+                    div.mainplaylist
+                        div.mainTitle
+                            h1 Play List
+                            a(href="/music/playlist")
+                                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16")
+                                    path(d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z")
+                        div.playlistcontent
+                            ul.lists
+                                if(playlistData)
+                                    each item in playlistData.playlists
+                                        +mainlist(item)
 
 
 

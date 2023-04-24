@@ -2,15 +2,17 @@ extends base
 include mixins/playlist.pug
 include mixins/player.pug
 block content
-    section
-        div.container
-            h2.subTitle Play lists
-            div.listmusic
-                ul.lists
-                    if(playlistData)
-                        each item, index in playlistData.playlists
-                            +playlist(item, index)
-            +player
+    main
+        include partials/nav
+        section
+            div.container
+                h2.subTitle Play lists
+                div.listmusic
+                    ul.lists
+                        if(playlistData)
+                            each item, index in playlistData.playlists
+                                +playlist(item, index)
+                +player
 block scripts
     script(src="/static/js/musicPlayer.js")
     script(src="/static/js/playList.js")

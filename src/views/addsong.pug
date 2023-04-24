@@ -1,17 +1,19 @@
 extends base
 block content
-    section
-        div.container
-            div.addSongContainer
-                h1.subTitle ADD SONG
-                div.inputContainer
-                    form(method="POST")
-                        p Title
-                        input(class="inputValue", name="title",placeholder="title", required, autocomplete="off")
-                        p Artist
-                        input(class="inputValue", name="artist",placeholder="artist", required,  autocomplete="off")
-                        p Album Url
-                        input(class="inputValue", name="thumbUrl",placeholder="album image Url", required,  autocomplete="off")
-                        p Youtube url
-                        input(class="inputValue", name="ytUrl",placeholder="youtube Url", required,  autocomplete="off")
-                        input(class="subBtn" value="ADD SONG" type="submit")
+    main
+        include partials/nav
+        section
+            div.container
+                div.addSongContainer
+                    h1.subTitle ADD SONG
+                    div.inputContainer
+                        form(method="POST")
+                            p Title
+                            input(class="inputValue", name="title",placeholder="title", required, autocomplete="off")
+                            p Artist
+                            input(class="inputValue", name="artist",placeholder="artist", required,  autocomplete="off")
+                            p Album Url
+                            input(class="inputValue", name="thumbUrl",placeholder="album image Url", required,  autocomplete="off")
+                            p Youtube url
+                            input(class="inputValue", name="ytUrl",placeholder="youtube Url", required,  autocomplete="off")
+                            input(class="subBtn" value="ADD SONG" type="submit")

@@ -2,14 +2,16 @@ extends base
 include mixins/toplist.pug
 include mixins/player.pug
 block content
-    section
-        div.container
-            h2.subTitle Cherry Top 100
-            div.listmusic
-                ul.lists
-                    each item, index in songs
-                        +toplist(item, index)
-            +player()
+    main
+        include partials/nav
+        section
+            div.container
+                h2.subTitle Cherry Top 100
+                div.listmusic
+                    ul.lists
+                        each item, index in songs
+                            +toplist(item, index)
+                +player()
 
 
 block scripts
