@@ -20,7 +20,7 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 let player;
-let volumeValue;
+let volumeValue = 50;
 
 // youtube iframe api
 function onYouTubeIframeAPIReady(youtubeId) {
@@ -152,7 +152,7 @@ $volunmuteBtn.addEventListener("click", () => {
     const valPer = ($volcontrol.value / $volcontrol.max) * 100;
     $volcontrol.style.background = `linear-gradient(to right, #ffff ${valPer}%, #C79FDF ${valPer}%)`;
   }
-  if (volumeValue === "0") {
+  if ($volcontrol.value === 0) {
     player.mute();
   } else {
     player.unMute();
@@ -168,11 +168,12 @@ $volmuteBtn.addEventListener("click", () => {
     $volcontrol.value = 0;
     $volcontrol.style.background = `linear-gradient(to right, #ffff 0%, #C79FDF 0%)`;
   }
-  $volunmuteBtn.style.display = "flex";
-  $volmuteBtn.style.display = "none";
-  if (volumeValue !== "0") {
+
+  if ($volcontrol.value !== 0) {
     player.mute();
   } else {
     player.unMute();
   }
+  $volunmuteBtn.style.display = "flex";
+  $volmuteBtn.style.display = "none";
 });
